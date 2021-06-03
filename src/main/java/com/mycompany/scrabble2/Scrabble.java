@@ -6,7 +6,8 @@ import javax.swing.*;
 /**
  *Este es la clase mayor donde se genera todo el tablero grafico
  * y hace que funcione el scrabble
- * @author juane
+ * @author Juan Esteban Jaramillo, Samuel Palacio, Santiago Rodriguez 
+ * @version 2021 05 29
  */
 public class Scrabble extends javax.swing.JFrame {
 
