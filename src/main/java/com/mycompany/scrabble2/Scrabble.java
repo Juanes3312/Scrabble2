@@ -3,10 +3,12 @@ package com.mycompany.scrabble2;
 import java.awt.Color;
 import java.util.ArrayList;
 import javax.swing.*;
+
 /**
- *Este es la clase mayor donde se genera todo el tablero grafico
- * y hace que funcione el scrabble
- * @author Juan Esteban Jaramillo, Samuel Palacio, Santiago Rodriguez 
+ * Este es la clase mayor donde se genera todo el tablero grafico y hace que
+ * funcione el scrabble
+ *
+ * @author Juan Esteban Jaramillo, Samuel Palacio, Santiago Rodriguez
  * @version 2021 05 29
  */
 public class Scrabble extends javax.swing.JFrame {
@@ -15,22 +17,24 @@ public class Scrabble extends javax.swing.JFrame {
      * Creates new form Scrabble
      */
     /**
-     * Este constructor llama dos metodos donde se crean la matriz de botones y donde se crean los otros objetos graficos
+     * Este constructor llama dos metodos donde se crean la matriz de botones y
+     * donde se crean los otros objetos graficos
      */
     public Scrabble() {
         initComponents();
         setMatrix();
     }
-    
+
     /**
      * este constructos nos crea un diccionario
+     *
      * @param diccionario diccionario que se usa para el scrabble
      */
     public Scrabble(Diccionario diccionario) {
         this.diccionario = diccionario;
     }
-    
-     private int FILS = 16;
+
+    private int FILS = 16;
     private int COLS = 16;
     JButton[][] CUADRO = new JButton[FILS][COLS];
     private int turn = 0;
@@ -46,8 +50,8 @@ public class Scrabble extends javax.swing.JFrame {
     private ArrayList<String> palabrasTablero = new ArrayList<String>();
 
     /**
-     * este metodo crea la cuadricula de botones que se usa para
-     * poner la letras del scrabble
+     * este metodo crea la cuadricula de botones que se usa para poner la letras
+     * del scrabble
      */
     public void setMatrix() {
         int x = 0;
@@ -83,11 +87,10 @@ public class Scrabble extends javax.swing.JFrame {
         jScrollPane1.setVisible(false);
     }
 
-    
     /**
-     * Se llama a este método desde dentro del constructor para inicializar el formulario.
-     * ADVERTENCIA: NO modifique este código. El contenido de este método es siempre
-     * regenerado por el Editor de formularios.
+     * Se llama a este método desde dentro del constructor para inicializar el
+     * formulario. ADVERTENCIA: NO modifique este código. El contenido de este
+     * método es siempre regenerado por el Editor de formularios.
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -183,9 +186,11 @@ public class Scrabble extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-    
+
     /**
-     * Este metodo inicia el juego del scrabble mostrando todos los botones y demas cosas que se necesitan
+     * Este metodo inicia el juego del scrabble mostrando todos los botones y
+     * demas cosas que se necesitan
+     *
      * @param evt evento del click
      */
     private void jButtonStartActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonStartActionPerformed
@@ -207,13 +212,14 @@ public class Scrabble extends javax.swing.JFrame {
             nombre = jugador2;
         }
         jLabel1.setText("<html><p>Turno de " + nombre + "</p><p>Ingrese las letras que tiene en la mano sin espacios</p></html>");
-   
+
     }//GEN-LAST:event_jButtonStartActionPerformed
-    
+
     /**
-     * este metodo se ingresa las letras de cada jugador
-     * y llama las clases de diccionario y lettercombinations para traer las mejores 10 o menos palabas con las letras dadas
-     * y mostrarlas en el grafico
+     * este metodo se ingresa las letras de cada jugador y llama las clases de
+     * diccionario y lettercombinations para traer las mejores 10 o menos
+     * palabas con las letras dadas y mostrarlas en el grafico
+     *
      * @param evt evento donde se llama al metodo
      */
     private void jButtonEnterInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnterInputActionPerformed
@@ -240,11 +246,13 @@ public class Scrabble extends javax.swing.JFrame {
     }//GEN-LAST:event_jButtonEnterInputActionPerformed
 
     /**
-     * Este metodo se llama en el boton de finalizar y finaliza el programa mostrando el ganador o el perdedor
+     * Este metodo se llama en el boton de finalizar y finaliza el programa
+     * mostrando el ganador o el perdedor
+     *
      * @param evt evento del click
      */
     private void jButtonFinalizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonFinalizarActionPerformed
-         if (j1.getPuntaje() > j2.getPuntaje()) {
+        if (j1.getPuntaje() > j2.getPuntaje()) {
             jLabel1.setText("<html><p>Ganador: " + jugador1 + " = " + j1.getPuntaje() + "</p><p>Perdedor: " + jugador2 + " = " + j2.getPuntaje() + "</p>");
         } else if (j2.getPuntaje() > j1.getPuntaje()) {
             jLabel1.setText("<html><p>Ganador: " + jugador2 + " = " + j2.getPuntaje() + "</p><p>Perdedor: " + jugador1 + " = " + j1.getPuntaje() + "</p>");
@@ -261,15 +269,17 @@ public class Scrabble extends javax.swing.JFrame {
         //System.exit(0);
     }//GEN-LAST:event_jButtonFinalizarActionPerformed
 
-     /**
-      * Este metodo caputa la palabra que el jugador quiere ingresar al tablero y valida
-      * que la palabra no este en el tablero, que la primera palabra empiece en el centro
-      * y que obligatoriamente la palabra atraviese otra a menos que sea el primer turno
-      * despues de estas validaciones pone la palabra en el tablero
-      * @param evt evento en el cual se llama el metodo
-      */
+    /**
+     * Este metodo caputa la palabra que el jugador quiere ingresar al tablero y
+     * valida que la palabra no este en el tablero, que la primera palabra
+     * empiece en el centro y que obligatoriamente la palabra atraviese otra a
+     * menos que sea el primer turno despues de estas validaciones pone la
+     * palabra en el tablero
+     *
+     * @param evt evento en el cual se llama el metodo
+     */
     private void jButtonEnterColumnActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnterColumnActionPerformed
-       // TODO add your handling code here:
+        // TODO add your handling code here:
         String palabra = lista1.getSelectedValue();// CASA: 6
         String palabraF = "";
         if (palabra.indexOf(":") > -1) {
@@ -286,31 +296,28 @@ public class Scrabble extends javax.swing.JFrame {
         int cont = 0;
 
         for (int i = 0; i < palabraF.length(); i++) {
-            if (turn == 0) {
+            /*if (turn == 0) {
                 if (columna != 7 || fila != 7) {
                     JOptionPane.showMessageDialog(null, "La primera palabra tiene que estar en el centro");
                     validacionPalabra = false;
                     validacion = false;
                     break;
                 }
-            }
+            }*/
+
             if (fila == 0 || columna == 0) {
                 JOptionPane.showMessageDialog(null, "no puedes colocar palabras en la posicion 0");
                 validacionPalabra = false;
                 validacion = false;
                 break;
             }
-            if (fila > 15 || columna + i > 15 || CUADRO[columna][fila + i].getText() != "" || columna > 15 || fila + i > 15 || CUADRO[columna + i][fila].getText() != "") {
+            if (opcion == 1) {
                 System.out.println(fila + "soy fila");
                 System.out.println(columna + " soy columna");
-                System.out.println(CUADRO[columna][fila + i].getText() + " soy el espacio fila + 1");
-                String prueba = CUADRO[columna][fila + i].getText();
-                String prueba2 = CUADRO[columna + i][fila].getText();
-                System.out.println(CUADRO[columna + i][fila].getText() + "soy el espacio columna + 1");
-                if (turn == 0) {
-
-                }
-                if (opcion == 1) {
+                if (!"".equals(CUADRO[columna][fila + i].getText()) || columna > 15 || fila + i > 15) {
+                    String prueba = CUADRO[columna][fila + i].getText();
+                    System.out.println(CUADRO[columna][fila + i].getText() + " soy el espacio fila + 1");
+                    System.out.println(i + "soy i");
                     if (!prueba.equals(String.valueOf(palabraF.charAt(i)))) {
                         System.out.println(String.valueOf(palabraF.charAt(i)) + " soy la letra a validar");
                         System.out.println(prueba + " soy prueba");
@@ -319,13 +326,20 @@ public class Scrabble extends javax.swing.JFrame {
                         validacion = false;
                         //CUADRO[columna][fila + i].setText("");
                         //CUADRO[columna][fila + i].setBackground(new Color(4, 156, 96));
-
                         break;
                     } else {
                         //cruzado = true;
                         cont++;
                     }
-                } else if (opcion == 2) {
+                }
+
+            } else if (opcion == 2) {
+                System.out.println(fila + "soy fila");
+                System.out.println(columna + " soy columna");
+                if (!"".equals(CUADRO[columna + i][fila].getText()) || columna + i > 15 || fila > 15) {
+                    System.out.println(i + "soy i");
+                    String prueba2 = CUADRO[columna + i][fila].getText();
+                    System.out.println(CUADRO[columna + i][fila].getText() + "soy el espacio columna + 1");
                     if (!prueba2.equals(String.valueOf(palabraF.charAt(i)))) {
                         System.out.println(String.valueOf(palabraF.charAt(i)) + " soy la letra a validar");
                         System.out.println(prueba2 + " soy prueba2");
@@ -341,10 +355,11 @@ public class Scrabble extends javax.swing.JFrame {
                     }
                 }
             }
+
             System.out.println(cont + "soy cont");
         }
         for (int k = 0; k < palabrasTablero.size(); k++) {
-            if (palabrasTablero.get(k).equals(palabraF)){
+            if (palabrasTablero.get(k).equals(palabraF)) {
                 validacionPalabra = false;
                 validacion = false;
                 JOptionPane.showMessageDialog(null, "Esta Palabra ya esta en el tablero");
