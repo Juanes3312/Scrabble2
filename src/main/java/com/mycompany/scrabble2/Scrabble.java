@@ -225,24 +225,35 @@ public class Scrabble extends javax.swing.JFrame {
     private void jButtonEnterInputActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEnterInputActionPerformed
         Diccionario diccionario = new Diccionario();
         diccionario.leerDiccionario("diccionario.txt");
-        //Scanner entrada = new Scanner(System.in);
+
         LetterCombinations lc = new LetterCombinations(diccionario);
-        //System.out.println("\nIngrese las letras que tiene en la mano sin espacios\n");
+
         jLabel1.setText(" ");
-        //String letrasEnMiMano = entrada.next();
+
         String letrasEnMiMano = jTextField1.getText();
-        //System.out.println("Estas son las mejores palabras que puedes usar\n");
+
         lc.crearPalabras(letrasEnMiMano);
         lc.mejores10();
         ArrayList<Palabra> arrlistPalabras = lc.getPalabrasArrayString();
         String Palabras[] = new String[arrlistPalabras.size()];
 
-        //agregarPalabrasLista(Palabras);
         for (int i = 0; i < arrlistPalabras.size(); i++) {
             Palabras[i] = arrlistPalabras.get(i).toString();
         }
-        jLabel1.setText("<html><p>Turno de " + nombre + "</p><p>Estas son las mejores palabras que puedes usar</p></html>");
-        lista1.setListData(Palabras);
+        if (Palabras.length > 0) {
+            jLabel1.setText("<html><p>Turno de " + nombre + "</p><p>Estas son las mejores palabras que puedes usar</p></html>");
+            lista1.setListData(Palabras);
+        } else {
+            if (turn == 1 || turn == 0) {
+                nombre = jugador1;
+            } else if (turn == 2) {
+                nombre = jugador2;
+            }
+            String vacio[] = new String[0];
+            lista1.setListData(vacio);
+            jLabel1.setText("<html><p>No tienes Palabras para usar con estas letras</p><p>Turno de " + nombre + "</p><p>Ingresa las letras que tienes en tu mano</p></html>");
+        }
+
     }//GEN-LAST:event_jButtonEnterInputActionPerformed
 
     /**
@@ -263,9 +274,9 @@ public class Scrabble extends javax.swing.JFrame {
         jButtonEnterColumn.setVisible(false);
         jButtonEnterInput.setVisible(false);
         jButtonFinalizar.setVisible(false);
-        lista1.setVisible(true);
-        jTextField1.setVisible(true);
-        jScrollPane1.setVisible(true);
+        lista1.setVisible(false);
+        jTextField1.setVisible(false);
+        jScrollPane1.setVisible(false);
         //System.exit(0);
     }//GEN-LAST:event_jButtonFinalizarActionPerformed
 
@@ -296,14 +307,20 @@ public class Scrabble extends javax.swing.JFrame {
         int cont = 0;
 
         for (int i = 0; i < palabraF.length(); i++) {
-            /*if (turn == 0) {
-                if (columna != 7 || fila != 7) {
-                    JOptionPane.showMessageDialog(null, "La primera palabra tiene que estar en el centro");
+            if (opcion != 1 && opcion != 2) {
+                JOptionPane.showMessageDialog(null, "Escriba bien el numero de la direccion que quiere usar");
+                validacionPalabra = false;
+                validacion = false;
+                break;
+            }
+            if (turn == 0) {
+                if (columna != 8 || fila != 8) {
+                    JOptionPane.showMessageDialog(null, "La primera palabra tiene que estar en el centro (8,8)");
                     validacionPalabra = false;
                     validacion = false;
                     break;
                 }
-            }*/
+            }
 
             if (fila == 0 || columna == 0) {
                 JOptionPane.showMessageDialog(null, "no puedes colocar palabras en la posicion 0");
@@ -378,6 +395,8 @@ public class Scrabble extends javax.swing.JFrame {
                         CUADRO[columna][fila + i].setBackground(new Color(170, 100, 33));
                         //validacion = true;
                         palabrasTablero.add(palabraF);
+                        String vacio[] = new String[0];
+                        lista1.setListData(vacio);
                     } else {
                         JOptionPane.showMessageDialog(null, "Tienes que cruzar con alguna palabra que este en el tablero");
                         validacionPalabra = false;
@@ -393,6 +412,8 @@ public class Scrabble extends javax.swing.JFrame {
                     if (cruzado == true || turn == 0) {
                         CUADRO[columna + i][fila].setText(String.valueOf(palabraF.charAt(i)));
                         CUADRO[columna + i][fila].setBackground(new Color(170, 100, 33));
+                        String vacio[] = new String[0];
+                        lista1.setListData(vacio);
                         //validacion = true;
                         palabrasTablero.add(palabraF);
                     } else {
@@ -421,6 +442,8 @@ public class Scrabble extends javax.swing.JFrame {
                 nombre = jugador1;
             }
         }
+        String vacio[] = new String[0];
+        lista1.setListData(vacio);
         System.out.println(turn + "soy el turno");
         System.out.println(nombre + "soy nombre");
         jLabel1.setText("<html><p>Turno de " + nombre + "</p><p>Ingrese las letras que tiene en la mano sin espacios</p></html>");
