@@ -1,20 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
-package com.mycompany.scrabble2;
 
+package com.mycompany.scrabble2;
 
 import java.util.Comparator;
 
-/*Clase nos Compara Contiene el metodo para 
+/**
+ * Clase nos Compara Contiene el metodo para 
  * comparar las palabras segun su valor
  * 
  * @author Juan Esteban Jaramillo, Samuel Palacio, Santiago Rodriguez 
  * @version 2021 05 11
  */
-
 public class OrganizarPorPuntaje implements Comparator<Palabra> {
     /** 
     * Este metodo recoge dos palabras y las compara entre si

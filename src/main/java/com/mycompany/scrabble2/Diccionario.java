@@ -1,12 +1,12 @@
 package com.mycompany.scrabble2;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.Scanner;
+import java.util.*;
 
-/*diccionario con palabras válidas para el
+/**
+ * diccionario con palabras válidas para el
  * juego Scrabble.
  * Las palabras se leen de un archivo texto, en el cual cada palabra
  * está en una línea diferente
@@ -14,11 +14,6 @@ package com.mycompany.scrabble2;
  * @author Helmuth Trefftz
  * @version 2021 04 27
  */
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.util.Scanner;
-import java.util.*;
-
 public class Diccionario
 {
     public ArrayList <String> diccionario = new ArrayList<>();
